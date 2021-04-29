@@ -1,0 +1,140 @@
+<html>
+<head>
+  <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+  <script type="text/javascript" src="../static/js/main.js"></script>
+</head>
+<body>
+  <form method="GET" action="./test/">
+  <div class="boardText">
+    <h3>Allied Board</h3>
+    <div class="boardDropdown">
+      <select class="boardDropdown", id="numrowsAlly" name="numrows" onchange="changeAllied()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+    </div>
+    <table id="maintable">
+      <tbody id="maintablebodyAlly">
+        <tr>
+          <td>Row 1</td>
+          <td>
+            <input type="text" id="row1text1" placeholder="Text1">
+            <input type="text" id="row1text2" placeholder="Text2">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="boardText">
+    <h3>Enemy Board</h3>
+    <select id="numrowsEnemy" name="numrows" onchange="changeEnemy()">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+    </select>
+    <table id="maintable">
+      <tbody id="maintablebodyEnemy">
+        <tr>
+          <td>Row 1</td>
+          <td>
+            <input type="text" id="row1text1" placeholder="Text1">
+            <input type="text" id="row1text2" placeholder="Text2">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button type="button" onclick="getAllTables()">Submit</button>
+    <input type="submit" value="SubmitInput">
+  </div>
+  </form>
+
+  <!-- <script type="text/javascript">
+
+    function removerows (tablebody) {
+      var rows = tablebody.getElementsByTagName("tr");
+      while (rows.length)
+        rows[0].parentNode.removeChild(rows[0]);
+    }
+
+    function addrows (tablebody, n) {
+      for (var i=0; i<n; i++) {
+        var row = document.createElement("tr");
+        var titlecell = document.createElement("td");
+        titlecell.appendChild(document.createTextNode("Row " + (i+1)));
+        row.appendChild(titlecell);
+
+        var cell = document.createElement("td");
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "row["+i+"]HP");
+        input.setAttribute("placeholder", "HP");
+        var input2 = document.createElement("input");
+        input2.setAttribute("type", "text");
+        input2.setAttribute("id", "row["+i+"]ATK");
+        input2.setAttribute("placeholder", "ATK");
+        cell.appendChild(input);
+        row.appendChild(cell);
+        cell.appendChild(input2);
+        tablebody.appendChild(row);
+      }
+    }
+
+    function change () {
+      var select = document.getElementById("numrows");
+      var index = select.selectedIndex;
+      var n = parseInt(select.value);
+      var tablebody = document.getElementById("maintablebody");
+      removerows(tablebody);
+      addrows(tablebody, n);
+    }
+
+    function printText() {
+      var dict = {};
+      var select = document.getElementById("numrows");
+      var n = parseInt(select.value);
+      for (var i=0; i<n; i++) {
+        var text1 = document.getElementById("row["+i+"]text1");
+        var text2 = document.getElementById("row["+i+"]text2");
+        // console.log(text1);
+        // console.log(text2);
+
+        dict["row"+i+"col1"] = text1.value
+        dict["row"+i+"col2"] = text2.value
+        // array.push(text1, text2);
+      }
+      console.log(dict);
+      Get(encodeURIComponent(JSON.stringify(dict)));
+    }
+
+    function Get(stringInput){
+      // var stringInput = "aleccheckthisout";
+      // var stringInput_Arr = JSON.stringify(array)
+      var Httpreq = new XMLHttpRequest();
+      var baseSiteURL = 'http://localhost:5000/test/';
+      var httpURL = baseSiteURL + stringInput;
+      console.log(httpURL);
+      Httpreq.open("GET",httpURL,false);
+      Httpreq.send(null);
+      return Httpreq.responseText;
+    }
+
+    function test() {
+      console.log("Testing!");
+      console.log(Get());
+    }
+  </script> -->
+
+
+</body>
+</html>
