@@ -23,6 +23,10 @@ def printTest(inputStr):
     print(type(strToDict))
     print(strToDict)
 
+    with open('minionsList.json', 'w') as outfile:
+        json.dump(strToDict, outfile)
+        print("Dumped")
+
     # sim.sim()
     # Do shit here
     # response = inputStr

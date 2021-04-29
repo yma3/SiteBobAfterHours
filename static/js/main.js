@@ -122,7 +122,10 @@ function makeMinionDropdown(row, i, ally) {
 
   // var minionList = ["Tabby Cat", "Alley Cat"];
 
-  var rank1s = ["Tabby Cat", "Alley Cat"];
+  var rank1s = ["Alley Cat", "Tabby Cat", "Scavenging Hyena","Fiendish Servant","Vulgar Homunculus","Wrath Weaver",
+                  "Dragonspawn Lieutenant","Red Whelp","Refreshing Anomaly","Sellemental","Water Droplet","Micro Machine",
+                  "Micro Mummy","Murloc Tidehunter","Murloc Scout","Murloc Tidecaller","Rockpool Hunter","Deck Swabbie","Scallywag",
+                  "Acolyte of C'Thun"];
   var rank2s = ["Spawn of N'Zoth", "Boom Bot"]
 
 
