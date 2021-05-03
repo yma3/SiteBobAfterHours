@@ -1,4 +1,5 @@
 import json
+import subprocess
 
 
 
@@ -51,6 +52,17 @@ def extractBoards(board_dicts):
         json.dump(minion_vects, outfile)
         print("Dumped")
 
+    strdata = simSubprocess()
+    return strdata
+
+
+def simSubprocess():
+    print("Running subprocess...")
+    p=subprocess.Popen(["../BobAfterHours/src/main.out", "100", "0", "./sim_test.json"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout_data, stderr_data = p.communicate()
+    print(stdout_data.decode('utf8'))
+    print("Subprocess Done.")
+    return stdout_data.decode('utf8')
 
 
 
@@ -66,3 +78,4 @@ if __name__ == "__main__":
 
 
     extractBoards(allBoards_data)
+    # simSubprocess()

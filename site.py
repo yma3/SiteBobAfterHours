@@ -28,10 +28,15 @@ def printTest(inputStr):
         print("Dumped")
 
     # sim.sim()
+    with open('minionsList.json') as json_file: # minionsList is the list of minions
+        allBoards_data = json.load(json_file)
+
+
+    strdata = sim.extractBoards(allBoards_data)
     # Do shit here
     # response = inputStr
     # response.headers.add('Access-Control-Allow-Origin: *')
-    return decodedStr
+    return strdata
 
 @app.route("/whatbuildshouldiplay", methods=['GET'])
 def getRandomBuild():
