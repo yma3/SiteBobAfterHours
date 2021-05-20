@@ -48,7 +48,7 @@ def extractBoards(board_dicts):
     minion_vects["Allied"] = allied_minionvect
     minion_vects["Enemy"] = enemy_minionvect
 
-    with open('sim_test.json', 'w') as outfile:
+    with open('inputFile.json', 'w') as outfile:
         json.dump(minion_vects, outfile)
         print("Dumped")
 
@@ -58,9 +58,9 @@ def extractBoards(board_dicts):
 
 def simSubprocess():
     print("Running subprocess...")
-    p=subprocess.Popen(["../BobAfterHours/src/main.out", "100", "0", "./sim_test.json"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p=subprocess.Popen(["../BobAfterHours/src/main.out", "10000", "0", "./inputFile.json", "./AfterHours.db"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout_data, stderr_data = p.communicate()
-    print(stdout_data.decode('utf8'))
+    # print(stdout_data.decode('utf8'))
     print("Subprocess Done.")
     return stdout_data.decode('utf8')
 

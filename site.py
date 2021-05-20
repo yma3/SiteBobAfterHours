@@ -31,12 +31,21 @@ def printTest(inputStr):
     with open('minionsList.json') as json_file: # minionsList is the list of minions
         allBoards_data = json.load(json_file)
 
-
     strdata = sim.extractBoards(allBoards_data)
+    # print(strdata)
+    strdata = strdata.split('$')[1:]
+    print(strdata)
+    label = [item for item in range(-48, 48+1)]
+    dmgbrk = [int(i) for i in strdata[2].split(',')]
+    print(label)
+    print(dmgbrk)
+
+
+
     # Do shit here
     # response = inputStr
     # response.headers.add('Access-Control-Allow-Origin: *')
-    return strdata
+    return render_template('sim_output.html', title='WoW!', simout=strdata, WLRate=strdata[1], labels=label, values=dmgbrk, max=10000)
 
 @app.route("/whatbuildshouldiplay", methods=['GET'])
 def getRandomBuild():

@@ -15,12 +15,12 @@ function addrows (tablebody, n, ally) {
     var cell = document.createElement("td");
     var input = document.createElement("input");
     input.setAttribute("type", "text");
-    input.setAttribute("id", allytext+"row["+i+"]HP");
-    input.setAttribute("placeholder", "HP");
+    input.setAttribute("id", allytext+"row["+i+"]ATK");
+    input.setAttribute("placeholder", "ATK");
     var input2 = document.createElement("input");
     input2.setAttribute("type", "text");
-    input2.setAttribute("id", allytext+"row["+i+"]ATK");
-    input2.setAttribute("placeholder", "ATK");
+    input2.setAttribute("id", allytext+"row["+i+"]HP");
+    input2.setAttribute("placeholder", "HP");
     makeMinionDropdown(row, i, ally)
     cell.appendChild(input);
     row.appendChild(cell);
