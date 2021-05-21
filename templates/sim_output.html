@@ -49,11 +49,12 @@
      new Chart(mychart).Bar(barData, {
 
        scales:{
-         xAxes: [{stacked: true}],
-         yAxes: [{stacked: false,
+         x: [{display: true, stacked: true, scaleLabel:{display: true, labelString:"Damage Dealt"}}],
+         y: [{display:true, stacked: false,
                   ticks: {
                     beginAtZero:true,
-                  }}]
+                  },
+                  labelString: 'Iterations'}]
        },
 
        scaleOverride: true,
@@ -67,6 +68,8 @@
        scaleShowLabels: true
        }
      );
+     mychart.options.scales.yAxes[ 0 ].scaleLabel.labelString = "New Label";
+
 
     </script>
   </center>

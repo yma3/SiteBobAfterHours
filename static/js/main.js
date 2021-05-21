@@ -8,8 +8,9 @@ function addrows (tablebody, n, ally) {
   var allytext = ally ? "Ally" : "Enemy"
   for (var i=0; i<n; i++) {
     var row = document.createElement("tr");
+    row.setAttribute("class", "tableRow")
     var titlecell = document.createElement("td");
-    titlecell.appendChild(document.createTextNode("Row " + (i+1)));
+    titlecell.appendChild(document.createTextNode("Minion " + (i+1)));
     row.appendChild(titlecell);
 
     var cell = document.createElement("td");
@@ -17,14 +18,60 @@ function addrows (tablebody, n, ally) {
     input.setAttribute("type", "text");
     input.setAttribute("id", allytext+"row["+i+"]ATK");
     input.setAttribute("placeholder", "ATK");
+
+
     var input2 = document.createElement("input");
     input2.setAttribute("type", "text");
     input2.setAttribute("id", allytext+"row["+i+"]HP");
     input2.setAttribute("placeholder", "HP");
-    makeMinionDropdown(row, i, ally)
+
+    var div3 = document.createElement("div");
+    div3.setAttribute("class", "boxesdiv");
+
+    var inputTaunt = document.createElement("input");
+    inputTaunt.setAttribute("type", "checkbox");
+    inputTaunt.setAttribute("id", allytext+"row["+i+"]isTaunt");
+    inputTaunt.setAttribute("class", "checkboxes");
+    var inputDS = document.createElement("input");
+    inputDS.setAttribute("type", "checkbox");
+    inputDS.setAttribute("id", allytext+"row["+i+"]isDivine");
+    inputDS.setAttribute("class", "checkboxes");
+    var inputPois = document.createElement("input");
+    inputPois.setAttribute("type", "checkbox");
+    inputPois.setAttribute("id", allytext+"row["+i+"]isPoison");
+    inputPois.setAttribute("class", "checkboxes");
+
+    var imgTaunt = document.createElement("img");
+    imgTaunt.setAttribute("src", "static/img/taunt.jpg");
+    imgTaunt.setAttribute("class", "imgicon");
+
+    var imgDS = document.createElement("img");
+    imgDS.setAttribute("src", "static/img/DivineShield_Bubble2.png");
+    imgDS.setAttribute("class", "imgicon");
+
+    var imgPois = document.createElement("img");
+    imgPois.setAttribute("src", "static/img/poison.jpg");
+    imgPois.setAttribute("class", "imgicon");
+
+    makeMinionDropdown(cell, i, ally)
+
+
     cell.appendChild(input);
     row.appendChild(cell);
     cell.appendChild(input2);
+    cell.appendChild(div3);
+
+    div3.appendChild(imgTaunt);
+    div3.appendChild(inputTaunt);
+    div3.appendChild(imgDS);
+    div3.appendChild(inputDS);
+    div3.appendChild(imgPois);
+    div3.appendChild(inputPois);
+
+    // var hrdivider = document.createElement("hr");
+    // hrdivider.setAttribute("class", "hrdivider");
+    // cell.appendChild(hrdivider)
+
     tablebody.appendChild(row);
   }
 }
@@ -68,7 +115,7 @@ function printText() {
 }
 
 function getTableValues(ally) {
-  console.log("HELLO HERE");
+  // console.log("HELLO HERE");
   var allytext = ally ? "Ally":"Enemy";
   var dict = {};
   var select = document.getElementById("numrows"+allytext);
@@ -77,13 +124,19 @@ function getTableValues(ally) {
     var minion = {};
     var text1 = document.getElementById(allytext+"row["+i+"]HP");
     var text2 = document.getElementById(allytext+"row["+i+"]ATK");
+    var text3 = document.getElementById(allytext+"row["+i+"]isTaunt");
+    var text4 = document.getElementById(allytext+"row["+i+"]isDivine");
+    var text5 = document.getElementById(allytext+"row["+i+"]isPoison");
     var selection = document.getElementById(allytext+"selectionCell"+i);
-    // console.log(text1.value);
-    // console.log(text2.value);
-    // console.log(selection);
+    // console.log(text3.checked);
+    // console.log(text4.checked);
+    // console.log(text5.checked);
     minion["Name"] = selection.value;
     minion["HP"] = text1.value;
     minion["ATK"] = text2.value;
+    minion["isTaunt"] = text3.checked;
+    minion["isDivine"] = text4.checked;
+    minion["isPoison"] = text5.checked;
     // array.push(text1, text2);
     dict["Minion"+i] = minion;
   }
@@ -91,7 +144,7 @@ function getTableValues(ally) {
 }
 
 function getAllTables() {
-  console.log("HELLO HERE");
+  // console.log("HELLO HERE");
   var dict = {};
   dict["AlliedBoard"] = getTableValues(1);
   dict["EnemyBoard"] = getTableValues(0);
@@ -142,6 +195,7 @@ function makeMinionDropdown(row, i, ally) {
   var listOfNumbers = ["a","b","c"];
   var selectionCell = document.createElement("select");
   selectionCell.setAttribute("id", allytext+"selectionCell" + i);
+  selectionCell.setAttribute("class", "selectionCell");
   for (var rank=0; rank<minionList.length; rank++) {
     var minionRanks = minionList[rank];
     var optgroup = document.createElement("optgroup")

@@ -4,9 +4,19 @@
   <script type="text/javascript" src="../static/js/main.js"></script>
 </head>
 <body>
+  <div class="greeting">
+    <img src="/static/img/bob.png">
+    <h1>After Hours</h1>
+    <p>A Hearthstone Battlegrounds offline combat simulator inspired by Bob's Buddy</p>
+    <hr>
+  </div>
+  <div>
+    <button type="button" class="submitbutton" onclick="getAllTables()">Submit</button>
+    <button type="button" class="submitbutton" onclick="testKrippSim()">Test Kripp</button>
+  </div>
   <form method="GET" action="./sim/">
   <div class="boardText">
-    <h3>Allied Board</h3>
+    <h2>Allied Board</h2>
     <div class="boardDropdown">
       <select class="boardDropdown", id="numrowsAlly" name="numrows" onchange="changeAllied()">
         <option value="1">1</option>
@@ -31,7 +41,7 @@
     </table>
   </div>
   <div class="boardText">
-    <h3>Enemy Board</h3>
+    <h2>Enemy Board</h2>
     <select id="numrowsEnemy" name="numrows" onchange="changeEnemy()">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -52,10 +62,6 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div>
-    <button type="button" onclick="getAllTables()">Submit</button>
-    <button type="button" onclick="testKrippSim()">Test Kripp</button>
   </div>
   </form>
 </body>

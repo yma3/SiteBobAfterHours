@@ -5,7 +5,68 @@
 }
 
 .boardText{
-  display: inline-block;
-  /* float:left; */
-  height:30%;
+  margin-left:20px;
+  display: block;
+  float:left;
+}
+
+.boxesdiv {
+  height: 30px;
+  position: relative;
+}
+
+.checkboxes {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding-left:5px;
+}
+
+.imgicon {
+  height:30px;
+  padding-left: 20px;
+}
+
+.tableRow {
+
+}
+
+.selectionCell {
+  background-color: #F8F8F8;
+}
+
+.hrdivider{
+  width:500;
+}
+
+.submitbutton {
+  /* margin-left:20px;
+  margin-top:20px; */
+}
+
+.greeting h1 h4 {
+  margin:0;
+  display:block;
+}
+
+.content {
+    width: 400px;
+    border: 4px solid red;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.greeting img {
+    margin-right: 15px;
+    float: left;
+    height:80px;
+}
+
+.greeting h1,
+.greeting p{
+    margin-left: 15px;
+    display: block;
+    margin: 2px 0 0 0;
 }

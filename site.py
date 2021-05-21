@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from urllib.parse import unquote
 import json
 import sim
+import params
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -20,15 +21,15 @@ def printTest(inputStr):
     # print(decodedStr)
     #
     strToDict = json.loads(inputStr)
-    print(type(strToDict))
-    print(strToDict)
+    # print(type(strToDict))
+    # print(strToDict)
 
-    with open('minionsList.json', 'w') as outfile:
+    with open(params.SITE_INPUT_FILE, 'w') as outfile:
         json.dump(strToDict, outfile)
-        print("Dumped")
+        # print("Dumped")
 
     # sim.sim()
-    with open('minionsList.json') as json_file: # minionsList is the list of minions
+    with open(params.SITE_INPUT_FILE) as json_file: # minionsList is the list of minions
         allBoards_data = json.load(json_file)
 
     strdata = sim.extractBoards(allBoards_data)
@@ -45,7 +46,7 @@ def getRandomBuild():
 
 @app.route("/testkrippsim", methods=['GET'])
 def testKrippSim():
-    with open('minionsList_test_kripp.json') as json_file: # minionsList is the list of minions
+    with open(params.TEST_DATA_INPUT_FILE) as json_file: # minionsList is the list of minions
         allBoards_data = json.load(json_file)
     strdata = sim.extractBoards(allBoards_data)
     # print(strdata)
@@ -78,7 +79,7 @@ def splitDmgBrk(dmgbrk):
             elif idx > 48:
                 wins[idx] = dmgbrk[idx]
 
-    print(max(wins), max(losses), max(ties))
+    # print(max(wins), max(losses), max(ties))
     return wins, losses, ties
 
 def extractSimData(strdata):
@@ -88,32 +89,43 @@ def extractSimData(strdata):
 
     # WL data contains [Wins, Losses, Ties, W|F, L|F, T|F]
     wldata = []
-    for wl in strdata[1].split(","):
+    for wl in strdata[1].split(",")[0:3]:
         x = str(int(wl.split(":")[1])/eps*100)[0:5]
+        x = x.split(".")
+        x = ".".join([x[0][:3], x[1][:2]])
+        wldata.append(x)
+
+    eps_givenFirst = 0
+    for wl in strdata[1].split(",")[3:6]:
+        eps_givenFirst += int(wl.split(":")[1])
+
+    # print(eps_givenFirst)
+    for wl in strdata[1].split(",")[3:6]:
+        x = str(int(wl.split(":")[1])/eps_givenFirst*100)[0:5]
         x = x.split(".")
         x = ".".join([x[0][:3], x[1][:2]])
         wldata.append(x)
 
 
 
-    print(strdata)
-    print(wldata)
+    # print(strdata)
+    # print(wldata)
     label = [item for item in range(-48, 48+1)]
     dmgbrk = [int(i) for i in strdata[2].split(',')]
     winbrk, lossbrk, tiebrk = splitDmgBrk(dmgbrk)
     filterIdx_dist = filterDmgBrk(dmgbrk)
-    print(filterIdx_dist)
+    # print(filterIdx_dist)
     label = label[48-filterIdx_dist:48+filterIdx_dist]
     winbrk = winbrk[48-filterIdx_dist:48+filterIdx_dist]
     lossbrk = lossbrk[48-filterIdx_dist:48+filterIdx_dist]
     tiebrk = tiebrk[48-filterIdx_dist:48+filterIdx_dist]
 
     WLtotals = ", ".join(strdata[1].split(",")[0:3])
-
-    print(winbrk, lossbrk, tiebrk)
-
-    print(label)
-    print(dmgbrk)
+    #
+    # print(winbrk, lossbrk, tiebrk)
+    #
+    # print(label)
+    # print(dmgbrk)
 
 
 

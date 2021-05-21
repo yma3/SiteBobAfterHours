@@ -1,1 +1,1 @@
-{"AlliedBoard": {"Minion0": {"Name": "Alley Cat", "HP": "b", "ATK": "a"}}, "EnemyBoard": {"Minion0": {"Name": "Alley Cat", "HP": "d", "ATK": "c"}}}
+{"AlliedBoard": {"Minion0": {"Name": "Alley Cat", "HP": "1", "ATK": "1", "isTaunt": false, "isDivine": false, "isPoison": false}}, "EnemyBoard": {"Minion0": {"Name": "Alley Cat", "HP": "1", "ATK": "1", "isTaunt": false, "isDivine": false, "isPoison": false}}}
