@@ -95,15 +95,14 @@ function getAllTables() {
   var dict = {};
   dict["AlliedBoard"] = getTableValues(1);
   dict["EnemyBoard"] = getTableValues(0);
-  Get(encodeURIComponent(JSON.stringify(dict)));
+  Get("sim/"+encodeURIComponent(JSON.stringify(dict)));
 }
-
 
 function Get(stringInput){
   // var stringInput = "aleccheckthisout";
   // var stringInput_Arr = JSON.stringify(array)
   var Httpreq = new XMLHttpRequest();
-  var baseSiteURL = 'http://localhost:5000/test/';
+  var baseSiteURL = 'http://localhost:5000/';
   var httpURL = baseSiteURL + stringInput;
   console.log(httpURL);
   Httpreq.open("GET",httpURL, true);
@@ -113,9 +112,9 @@ function Get(stringInput){
   return Httpreq.responseText;
 }
 
-function test() {
+function testKrippSim() {
   console.log("Testing!");
-  console.log(Get());
+  Get("testkrippsim");
 }
 
 function makeMinionDropdown(row, i, ally) {

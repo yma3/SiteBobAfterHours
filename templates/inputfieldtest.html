@@ -4,7 +4,7 @@
   <script type="text/javascript" src="../static/js/main.js"></script>
 </head>
 <body>
-  <form method="GET" action="./test/">
+  <form method="GET" action="./sim/">
   <div class="boardText">
     <h3>Allied Board</h3>
     <div class="boardDropdown">
@@ -56,85 +56,8 @@
   <div>
     <button type="button" onclick="getAllTables()">Submit</button>
     <input type="submit" value="SubmitInput">
+    <button type="button" onclick="testKrippSim()">Test Kripp</button>
   </div>
   </form>
-
-  <!-- <script type="text/javascript">
-
-    function removerows (tablebody) {
-      var rows = tablebody.getElementsByTagName("tr");
-      while (rows.length)
-        rows[0].parentNode.removeChild(rows[0]);
-    }
-
-    function addrows (tablebody, n) {
-      for (var i=0; i<n; i++) {
-        var row = document.createElement("tr");
-        var titlecell = document.createElement("td");
-        titlecell.appendChild(document.createTextNode("Row " + (i+1)));
-        row.appendChild(titlecell);
-
-        var cell = document.createElement("td");
-        var input = document.createElement("input");
-        input.setAttribute("type", "text");
-        input.setAttribute("id", "row["+i+"]HP");
-        input.setAttribute("placeholder", "HP");
-        var input2 = document.createElement("input");
-        input2.setAttribute("type", "text");
-        input2.setAttribute("id", "row["+i+"]ATK");
-        input2.setAttribute("placeholder", "ATK");
-        cell.appendChild(input);
-        row.appendChild(cell);
-        cell.appendChild(input2);
-        tablebody.appendChild(row);
-      }
-    }
-
-    function change () {
-      var select = document.getElementById("numrows");
-      var index = select.selectedIndex;
-      var n = parseInt(select.value);
-      var tablebody = document.getElementById("maintablebody");
-      removerows(tablebody);
-      addrows(tablebody, n);
-    }
-
-    function printText() {
-      var dict = {};
-      var select = document.getElementById("numrows");
-      var n = parseInt(select.value);
-      for (var i=0; i<n; i++) {
-        var text1 = document.getElementById("row["+i+"]text1");
-        var text2 = document.getElementById("row["+i+"]text2");
-        // console.log(text1);
-        // console.log(text2);
-
-        dict["row"+i+"col1"] = text1.value
-        dict["row"+i+"col2"] = text2.value
-        // array.push(text1, text2);
-      }
-      console.log(dict);
-      Get(encodeURIComponent(JSON.stringify(dict)));
-    }
-
-    function Get(stringInput){
-      // var stringInput = "aleccheckthisout";
-      // var stringInput_Arr = JSON.stringify(array)
-      var Httpreq = new XMLHttpRequest();
-      var baseSiteURL = 'http://localhost:5000/test/';
-      var httpURL = baseSiteURL + stringInput;
-      console.log(httpURL);
-      Httpreq.open("GET",httpURL,false);
-      Httpreq.send(null);
-      return Httpreq.responseText;
-    }
-
-    function test() {
-      console.log("Testing!");
-      console.log(Get());
-    }
-  </script> -->
-
-
 </body>
 </html>
