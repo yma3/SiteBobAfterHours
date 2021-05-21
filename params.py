@@ -1,4 +1,4 @@
-CPP_PROCESS_FILE = "./main.out"
+CPP_PROCESS_FILE = "./main_nodb.out"
 TOTAL_ITERATIONS = "10000"
 CPP_INPUT_FILE = "./inputFile.json"
 DATABASE_FILE = "./AfterHours.db"
