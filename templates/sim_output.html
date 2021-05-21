@@ -9,7 +9,8 @@
 <body>
   <center>
     <h1>{{ title }}</h1>
-    <h2>{{ WLRate }}</h2>
+    <h2>Wins: {{ WLProbs[0] }}% | Ties: {{ WLProbs[2] }}% | Losses: {{ WLProbs[1] }}% </h2>
+    <h3>P( Win | First ): {{ WLProbs[3] }}% | P( Tie | First ): {{ WLProbs[5] }}% | P( Loss | First ): {{ WLProbs[4] }}%</h3>
   </center>
   <center>
     <canvas id="chart" width="1280" height="720"></canvas>

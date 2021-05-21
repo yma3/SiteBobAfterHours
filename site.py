@@ -89,7 +89,12 @@ def extractSimData(strdata):
     # WL data contains [Wins, Losses, Ties, W|F, L|F, T|F]
     wldata = []
     for wl in strdata[1].split(","):
-        wldata.append(int(wl.split(":")[1])/eps)
+        x = str(int(wl.split(":")[1])/eps*100)[0:5]
+        x = x.split(".")
+        x = ".".join([x[0][:3], x[1][:2]])
+        wldata.append(x)
+
+
 
     print(strdata)
     print(wldata)
@@ -103,6 +108,8 @@ def extractSimData(strdata):
     lossbrk = lossbrk[48-filterIdx_dist:48+filterIdx_dist]
     tiebrk = tiebrk[48-filterIdx_dist:48+filterIdx_dist]
 
+    WLtotals = ", ".join(strdata[1].split(",")[0:3])
+
     print(winbrk, lossbrk, tiebrk)
 
     print(label)
@@ -113,8 +120,8 @@ def extractSimData(strdata):
     # Do shit here
     # response = inputStr
     # response.headers.add('Access-Control-Allow-Origin: *')
-    args = {'title':'WoW!','simout':strdata,'WLRate':wldata,'labels':label,
-            'win_values':winbrk, 'loss_values':lossbrk, 'tie_values':tiebrk, 'max':max(dmgbrk)*1.1
+    args = {'title':'Simulation Results (' + str(eps) + ' iterations)','simout':strdata,'WLTotals':WLtotals,'labels':label,
+            'win_values':winbrk, 'loss_values':lossbrk, 'tie_values':tiebrk, 'max':max(dmgbrk)*1.1, 'WLProbs':wldata
             }
     return args
 
